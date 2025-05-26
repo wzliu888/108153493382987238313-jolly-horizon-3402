@@ -21,6 +21,10 @@ function App() {
     return date.toLocaleTimeString()
   }
 
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })
+  }
+
   return (
     <div className="text-center">
       <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
@@ -32,6 +36,9 @@ function App() {
         <p>
           <span className="block text-2xl font-mono mb-4 text-[#61dafb]">
             {formatTime(currentTime)}
+          </span>
+          <span className="block text-sm font-mono mb-2 text-gray-400">
+            {formatDate(currentTime)}
           </span>
           Edit <code>src/routes/index.tsx</code> and save to reload.
         </p>
