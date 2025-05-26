@@ -1,14 +1,34 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useState, useEffect } from 'react'
 import logo from '../logo.svg'
 
 export const Route = createFileRoute('/')({
   component: App,
 })
 
+function Clock() {
+  const [time, setTime] = useState(new Date())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date())
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="mb-8 text-2xl font-mono">
+      {time.toLocaleTimeString()}
+    </div>
+  )
+}
+
 function App() {
   return (
     <div className="text-center">
       <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
+        <Clock />
         <img
           src={logo}
           className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
