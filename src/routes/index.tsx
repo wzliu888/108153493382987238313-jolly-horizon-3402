@@ -21,6 +21,10 @@ function App() {
     return date.toLocaleTimeString()
   }
 
+  const formatDate = (date: Date) => {
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+  }
+
   return (
     <div className="text-center">
       <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
@@ -30,6 +34,9 @@ function App() {
           alt="logo"
         />
         <p>
+          <span className="block text-lg font-mono mb-2 text-gray-300">
+            {formatDate(currentTime)}
+          </span>
           <span className="block text-2xl font-mono mb-4 text-[#61dafb]">
             {formatTime(currentTime)}
           </span>
